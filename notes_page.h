@@ -17,13 +17,17 @@ class NotesPage final : public QWidget
 
 		void addNote(const json& data);
 
+	protected:
+
+		void addSeparator();
+
 	private slots:
 
 		void removeNote();
 
 	protected:
 
-		QPointer<QVBoxLayout> _layout;
+		QPointer<QVBoxLayout> _content_layout;
 };
 
 #endif // NOTESPAGE_H

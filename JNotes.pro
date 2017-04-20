@@ -19,7 +19,8 @@ SOURCES += main.cpp\
     note.cpp \
     file.cpp \
     exception.cpp \
-    create_tab.cpp
+    create_tab.cpp \
+    closable_tabs.cpp
 
 HEADERS  += main_window.hpp \
     notes_page.h \
@@ -27,4 +28,5 @@ HEADERS  += main_window.hpp \
     json.hpp \
     file.hpp \
     exception.hpp \
-    create_tab.hpp
+    create_tab.hpp \
+    closable_tabs.hpp

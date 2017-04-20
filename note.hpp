@@ -27,6 +27,7 @@ class Note final : public QWidget
 
 	protected:
 
+		QPointer<QLabel> _title;
 		QPointer<QLabel> _text;
 		QPointer<QPushButton> _remove_btn;
 };

@@ -2,8 +2,9 @@
 #define MAIN_WINDOW_HPP
 
 #include <QMainWindow>
-#include <QTabWidget>
 #include <QPointer>
+
+#include "closable_tabs.hpp"
 
 class MainWindow final : public QMainWindow
 {
@@ -24,7 +25,7 @@ class MainWindow final : public QMainWindow
 
 	protected:
 
-		QPointer<QTabWidget> _tabs;
+		QPointer<ClosableTabs> _tabs;
 };
 
 #endif // MAIN_WINDOW_HPP

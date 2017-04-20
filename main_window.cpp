@@ -14,9 +14,13 @@ MainWindow::MainWindow(QWidget *parent)
 	: QMainWindow(parent)
 {
 	auto central_widget = new QWidget;
+	central_widget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+//	central_widget->setStyleSheet("background-color:red;");
+
 	auto main_layout = new QVBoxLayout(central_widget);
-	_tabs = new QTabWidget;
-	_tabs->setTabsClosable(true);
+	_tabs = new ClosableTabs;
+	_tabs->setMovable(true);
+	_tabs->setTabPosition(QTabWidget::TabPosition::South);
 
 	createPages();
 
@@ -25,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
 	main_layout->addWidget(_tabs);
 	main_layout->setAlignment(Qt::AlignCenter);
 	setCentralWidget(central_widget);
+
+	setMinimumSize(QSize(200, 150));
 
 	connect(_tabs, SIGNAL(tabCloseRequested(int)), this, SLOT(closeTab(int)));
 	connect(_tabs, SIGNAL(currentChanged(int)), this, SLOT(tabChanged(int)));
@@ -63,6 +69,8 @@ void MainWindow::closeTab(int index)
 
 void MainWindow::tabChanged(int index)
 {
-	if(index == _tabs->count() - 1)
-		static_cast<CreateTab*>(_tabs->widget(index))->focus();
+	auto create_tab = dynamic_cast<CreateTab*>(_tabs->widget(index));
+
+	if(create_tab)
+		create_tab->focus();
 }
